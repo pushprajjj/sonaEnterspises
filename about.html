@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sona Enterprises - Powering Innovation, Crafting Excellence</title>
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Sona Enterprises - Powering Innovation, Crafting Excellence"
+    />
+    <meta
+      property="og:description"
+      content="Trusted since 1991, Sona Enterprises manufactures high-quality motors, fans, immersion rods, and more."
+    />
+    <meta
+      property="og:image"
+      content="https://www.sonaenterprise.in/og-image.jpg"
+    />
+    <meta property="og:url" content="https://www.sonaenterprises.in" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sona Enterprises" />
+    <link rel="icon" href="assets/images/logo/ico.png?V=77.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css?v=23" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+      <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <div class="logo">
+        <div class="logo-text">
+          <img
+            src="assets/images/logo.png?V=77.png"
+            width="170"
+            alt=""
+            class="logo-img"
+          />
+        </div>
+      </div>
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li><a href="/#home">HOME</a></li>
+            <li><a href="/#products">PRODUCTS</a></li>
+            <li><a href="/about.html">ABOUT US</a></li>
+            <li><a href="/contact.html">CONTACT US</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="contact-email">
+        <i class="fa-solid fa-phone-volume"></i> +91-8860258975
+      </div>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-container">
+        <div class="about-layout">
+          <div
+            class="main-about-image"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <img src="assets/images/about/about3.png?V=77.png" alt="Optimus Neo Fan" />
+          </div>
+
+          <div
+            class="about-content"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
+            <h2>ABOUT</h2>
+            <p>
+              Established in 1991, Sona Enterprises is a trusted name in the
+              electrical goods manufacturing industry. With over three decades
+              of expertise, we specialize in producing high-quality immersion
+              rods, cooler pumps, ceiling fans, madhanis, motors, stators, AP
+              fans, and spare parts such as cooler blades and connectors.
+              <br />
+              With a strong distribution network and a customer-first approach,
+              we continue to power homes and businesses with excellence.
+            </p>
+            <div class="small-products-grid">
+              <div
+                class="small-product"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+              >
+                <img
+                  src="assets/images/about/about4.png?V=77.png"
+                  alt="Solarium Qube IOT"
+                />
+              </div>
+              <div
+                class="small-product"
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
+                <img src="assets/images/about/about5.png?V=77.png" alt="Designer Fan" />
+              </div>
+              <div
+                class="small-product"
+                data-aos="zoom-in"
+                data-aos-delay="300"
+              >
+                <img src="assets/images/about/about2.png?V=77.png" alt="Energion Fan" />
+              </div>
+              <div
+                class="small-product"
+                data-aos="zoom-in"
+                data-aos-delay="400"
+              >
+                <img src="assets/images/about/about1.png?V=77.png" alt="Designer Fan" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .about-section {
+          padding-bottom: 0;
+        }
+        .map {
+          background-color: rgb(255, 255, 255);
+          padding-bottom: 20px;
+        }
+        .map h2 {
+          margin: 50px 0 25px 0;
+        }
+        .map h2::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background-color: #c60320;
+          animation: pulse 1.5s infinite;
+        }
+
+        .map p {
+          margin-top: 25px;
+          font-weight: 600;
+          color: #000000;
+        }
+
+        .map span {
+          color: #c60320;
+        }
+        #map {
+          height: 800px;
+          width: 50%;
+          display: block;
+          margin: auto;
+        }
+
+        @media (max-width: 768px) {
+
+#map {
+   
+    width: 100%;
+  
+  } }
+      </style>
+
+      <div class="map">
+        <h2>Our Reach – Serving Cities Across India</h2>
+        <img src="assets/images/about/map se.png?V=77.png" alt="" />
+        <!-- <div class="map" id="map"></div> -->
+        <p>
+          We serve <span>Indore</span>, <span>Bhopal</span>,
+          <span>Raipur</span>, <span>Jodhpur</span>, <span>Jaipur</span>,
+          <span>Ahmedabad</span>, <span>Godhra</span> and many other locations
+          across <span>India</span>.
+        </p>
+      </div>
+
+      <script>
+        var map = L.map("map", {
+          center: [22.3511, 78.6677], // Center of India
+          zoom: 5,
+          minZoom: 4,
+          maxZoom: 10,
+          maxBounds: [
+            // Restricts panning outside India
+            [6, 67], // Southwest corner (Lakshadweep)
+            [36, 98], // Northeast corner (Arunachal Pradesh)
+          ],
+        });
+
+        // OpenStreetMap Tiles (No API Key Required)
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?V=77.png", {
+          attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(map);
+
+        // India Boundary (GeoJSON) with Black Outline
+        fetch(
+          "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/india/india-states.json"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            L.geoJSON(data, {
+              style: {
+                color: "black", // Black outline for India
+                weight: 2.5, // Thickness of the border
+                fillOpacity: 1, // Light transparent fill
+              },
+            }).addTo(map);
+          });
+
+        // Service locations in India
+        var locations = [
+          { lat: 22.7196, lng: 75.8577, name: "Indore, Madhya Pradesh" },
+          { lat: 23.2599, lng: 77.4126, name: "Bhopal, Madhya Pradesh" },
+          { lat: 21.2514, lng: 81.6296, name: "Raipur, Chhattisgarh" },
+          { lat: 26.2389, lng: 73.0243, name: "Jodhpur, Rajasthan" },
+          { lat: 26.9124, lng: 75.7873, name: "Jaipur, Rajasthan" },
+          { lat: 23.0225, lng: 72.5714, name: "Ahmedabad, Gujarat" },
+          { lat: 22.7771, lng: 73.614, name: "Godhra, Gujarat" },
+        ];
+
+        // Add markers
+        locations.forEach((location) => {
+          L.marker([location.lat, location.lng])
+            .addTo(map)
+            .bindPopup(`<b>${location.name}</b>`);
+        });
+      </script>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="footer-heading">Address:</h3>
+          <p class="footer-text">
+            Office: J - 187 Sector - 1 Bawana, DSIIDC
+            Industrial Area, 
+            Delhi 110039
+            
+          </p>
+          <h3 class="footer-heading">GSTIN</h3>
+          <p class="footer-text">
+            07AAKPJ4486D1ZM
+            
+          </p>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
+            <li><a href="/#products">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="footer-heading">Customer Supports</h3>
+          <p class="footer-text">
+            Phone No: +91-8860258975, 011-23616365<br />Email: jvarun@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <div class="copyright-bar">
+        <p class="copyright-text">
+          © Sona Enterprises, All Right Reserved. | Designed & Maintained By
+          <a href="https://byte4ge.com"
+            ><img
+              src="assets/images/logo/byte4ge.png?V=77.png"
+              width="100"
+              alt="Byte4ge"
+          /></a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
