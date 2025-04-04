@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
-    <!-- Add lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
+    <!-- Updated Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
     
     <style>
       /* Gallery styles */
@@ -112,6 +112,19 @@
       
       .gallery-item:hover img {
         transform: scale(1.05);
+      }
+      
+      /* Lightbox custom styles */
+      .lb-dataContainer {
+        padding-top: 10px;
+      }
+      
+      .lb-data .lb-caption {
+        font-size: 16px;
+      }
+      
+      .lb-data .lb-number {
+        padding-top: 5px;
       }
       
       @media (max-width: 768px) {
@@ -245,8 +258,12 @@
       </div>
     </footer>
 
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <!-- jQuery (required for Lightbox) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Updated Lightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/script.js"></script>
     
@@ -302,12 +319,13 @@
           galleryGrid.appendChild(galleryItem);
         });
         
-        // Initialize lightbox options
+        // Configure Lightbox
         lightbox.option({
           'resizeDuration': 200,
           'wrapAround': true,
           'albumLabel': 'Image %1 of %2',
-          'fadeDuration': 300
+          'fadeDuration': 300,
+          'showImageNumberLabel': true
         });
       });
     </script>
