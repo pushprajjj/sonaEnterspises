@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sona Enterprises - Powering Innovation, Crafting Excellence</title>
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Sona Enterprises - Powering Innovation, Crafting Excellence"
+    />
+    <meta
+      property="og:description"
+      content="Trusted since 1991, Sona Enterprises manufactures high-quality motors, fans, immersion rods, and more."
+    />
+    <meta
+      property="og:image"
+      content="https://www.sonaenterprise.in/og-image.jpg"
+    />
+    <meta property="og:url" content="https://www.sonaenterprises.in" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sona Enterprises" />
+    <link rel="icon" href="assets/images/logo/ico.png?V=77.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css?v=23" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Add lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
+    
+    <style>
+      /* Gallery styles */
+      .gallery-section {
+        padding: 80px 20px;
+        background-color: #f9f9f9;
+      }
+      
+      .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .gallery-heading {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .gallery-heading h2 {
+        font-size: 2.5rem;
+        color: #333;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .gallery-heading h2:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: #ff6b00;
+        margin: 10px auto 0;
+      }
+      
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+      }
+      
+      .gallery-item {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        height: 250px;
+        position: relative;
+      }
+      
+      .gallery-item:hover {
+        transform: translateY(-5px);
+      }
+      
+      .gallery-item a {
+        display: block;
+        height: 100%;
+      }
+      
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        }
+        
+        .gallery-item {
+          height: 180px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        
+        .gallery-item {
+          height: 150px;
+        }
+        
+        .gallery-heading h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+      <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <div class="logo">
+        <div class="logo-text">
+          <img
+            src="assets/images/logo.png?V=77.png"
+            width="170"
+            alt=""
+            class="logo-img"
+          />
+        </div>
+      </div>
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li><a href="/#home">HOME</a></li>
+            <li><a href="/#products">PRODUCTS</a></li>
+            <li><a href="/about.html">ABOUT US</a></li>
+            <li><a href="/contact.html">CONTACT US</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="contact-email">
+        <i class="fa-solid fa-phone-volume"></i> +91-8860258975
+      </div>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="gallery-container">
+        <div class="gallery-heading" data-aos="fade-up">
+          <h2>Our Product Gallery</h2>
+        </div>
+        <div class="gallery-grid" id="gallery-grid" data-aos="fade-up">
+          <!-- Gallery items will be loaded dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="footer-heading">Address:</h3>
+          <p class="footer-text">
+            Office: J - 187 Sector - 1 Bawana, DSIIDC
+            Industrial Area, 
+            Delhi 110039
+            
+          </p>
+          <h3 class="footer-heading">GSTIN</h3>
+          <p class="footer-text">
+            07AAKPJ4486D1ZM
+            
+          </p>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
+            <li><a href="/#products">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="footer-heading">Customer Supports</h3>
+          <p class="footer-text">
+            Phone No: +91-8860258975, 011-23616365<br />Email: jvarun@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <div class="copyright-bar">
+        <p class="copyright-text">
+          © Sona Enterprises, All Right Reserved. | Designed & Maintained By
+          <a href="https://byte4ge.com"
+            ><img
+              src="assets/images/logo/byte4ge.png?V=77.png"
+              width="100"
+              alt="Byte4ge"
+          /></a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <!-- Gallery Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const galleryGrid = document.getElementById('gallery-grid');
+        const galleryFolder = 'assets/images/gallery/';
+        
+        // List of image files from the gallery directory
+        const galleryImages = [
+          'main.png',
+          '1-inch-kit.png',
+          '1-inch-mini24mm-1.png',
+          '1-inch-mini24mm-2.png',
+          '1-inch-mini24mm.png',
+          '1-ten28mm-1.png',
+          '1-ten28mm-2.png',
+          '1-ten28mm.png',
+          '5-sut-1.png',
+          '5-sut-2.png',
+          '5-sut.png',
+          '6-sut-1.png',
+          '6-sut-2.png',
+          '6-sut.png',
+          '1-inch-bullet-1.png',
+          '1-inch-bullet-2.png',
+          '1-inch-bullet.png',
+          '1-inch-kit-1.png',
+          '1-inch-kit-2.png'
+        ];
+        
+        // Create gallery items
+        galleryImages.forEach(image => {
+          const imagePath = galleryFolder + image;
+          const imageName = image.replace('.png', '').replace(/-/g, ' ');
+          
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          
+          const link = document.createElement('a');
+          link.href = imagePath;
+          link.setAttribute('data-lightbox', 'gallery');
+          link.setAttribute('data-title', imageName);
+          
+          const img = document.createElement('img');
+          img.src = imagePath;
+          img.alt = imageName;
+          img.loading = 'lazy';
+          
+          link.appendChild(img);
+          galleryItem.appendChild(link);
+          galleryGrid.appendChild(galleryItem);
+        });
+        
+        // Initialize lightbox options
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true,
+          'albumLabel': 'Image %1 of %2',
+          'fadeDuration': 300
+        });
+      });
+    </script>
+  </body>
+</html>
