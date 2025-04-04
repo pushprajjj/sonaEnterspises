@@ -274,60 +274,126 @@
         const galleryGrid = document.getElementById('gallery-grid');
         const galleryFolder = 'assets/images/gallery/';
         
-        // List of image files from the gallery directory
-        const galleryImages = [
-          'main.png',
-          '1-inch-kit.png',
-          '1-inch-mini24mm-1.png',
-          '1-inch-mini24mm-2.png',
-          '1-inch-mini24mm.png',
-          '1-ten28mm-1.png',
-          '1-ten28mm-2.png',
-          '1-ten28mm.png',
-          '5-sut-1.png',
-          '5-sut-2.png',
-          '5-sut.png',
-          '6-sut-1.png',
-          '6-sut-2.png',
-          '6-sut.png',
-          '1-inch-bullet-1.png',
-          '1-inch-bullet-2.png',
-          '1-inch-bullet.png',
-          '1-inch-kit-1.png',
-          '1-inch-kit-2.png'
-        ];
-        
-        // Create gallery items
-        galleryImages.forEach(image => {
-          const imagePath = galleryFolder + image;
-          const imageName = image.replace('.png', '').replace(/-/g, ' ');
+        // Function to create gallery items from image array
+        function createGalleryItems(images) {
+          if (images && images.length > 0) {
+            images.forEach(image => {
+              const imagePath = galleryFolder + image;
+              const imageName = image.replace(/\.(png|jpg|jpeg|gif)$/i, '').replace(/-/g, ' ');
+              
+              const galleryItem = document.createElement('div');
+              galleryItem.className = 'gallery-item';
+              
+              const link = document.createElement('a');
+              link.href = imagePath;
+              link.setAttribute('data-lightbox', 'gallery');
+              link.setAttribute('data-title', imageName);
+              
+              const img = document.createElement('img');
+              img.src = imagePath;
+              img.alt = imageName;
+              img.loading = 'lazy';
+              
+              link.appendChild(img);
+              galleryItem.appendChild(link);
+              galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Configure Lightbox
+            lightbox.option({
+              'resizeDuration': 200,
+              'wrapAround': true,
+              'albumLabel': 'Image %1 of %2',
+              'fadeDuration': 300,
+              'showImageNumberLabel': true
+            });
+          } else {
+            galleryGrid.innerHTML = '<p class="no-images" style="text-align:center;font-size:18px;padding:20px;">No images found in the gallery.</p>';
+          }
+        }
+
+        // Try to fetch the PHP list first
+        fetch('list-gallery-images.php')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('PHP script not available');
+            }
+            return response.json();
+          })
+          .then(images => {
+            createGalleryItems(images);
+          })
+          .catch(error => {
+            console.log('Falling back to static method:', error);
+            
+            // Fallback: Use directory listing via AJAX
+            loadImagesFromDirectory(galleryFolder);
+          });
           
-          const galleryItem = document.createElement('div');
-          galleryItem.className = 'gallery-item';
+        // Fallback function to load images from directory
+        function loadImagesFromDirectory(directory) {
+          // Predefined list of common image extensions to check
+          const imageExtensions = ['png', 'jpg', 'jpeg', 'gif'];
+          const foundImages = [];
           
-          const link = document.createElement('a');
-          link.href = imagePath;
-          link.setAttribute('data-lightbox', 'gallery');
-          link.setAttribute('data-title', imageName);
+          // Function to check if a file exists
+          function checkImage(filename) {
+            return new Promise(resolve => {
+              const img = new Image();
+              img.onload = function() {
+                foundImages.push(filename);
+                resolve(true);
+              };
+              img.onerror = function() {
+                resolve(false);
+              };
+              img.src = directory + filename;
+            });
+          }
           
-          const img = document.createElement('img');
-          img.src = imagePath;
-          img.alt = imageName;
-          img.loading = 'lazy';
+          // Try to load images with numerical filenames (common pattern)
+          const imagePromises = [];
           
-          link.appendChild(img);
-          galleryItem.appendChild(link);
-          galleryGrid.appendChild(galleryItem);
-        });
-        
-        // Configure Lightbox
-        lightbox.option({
-          'resizeDuration': 200,
-          'wrapAround': true,
-          'albumLabel': 'Image %1 of %2',
-          'fadeDuration': 300,
-          'showImageNumberLabel': true
-        });
+          // Create an array of promises for checking filenames with different patterns
+          // Check numbered files (1.jpg, 2.jpg, etc.)
+          for (let i = 1; i <= 30; i++) {
+            imageExtensions.forEach(ext => {
+              imagePromises.push(checkImage(i + '.' + ext));
+            });
+          }
+          
+          // Check files from the previously known list as a backup
+          const knownImages = [
+            'main.png',
+            '1-inch-kit.png',
+            '1-inch-mini24mm-1.png',
+            '1-inch-mini24mm-2.png',
+            '1-inch-mini24mm.png',
+            '1-ten28mm-1.png',
+            '1-ten28mm-2.png',
+            '1-ten28mm.png',
+            '5-sut-1.png',
+            '5-sut-2.png',
+            '5-sut.png',
+            '6-sut-1.png',
+            '6-sut-2.png',
+            '6-sut.png',
+            '1-inch-bullet-1.png',
+            '1-inch-bullet-2.png',
+            '1-inch-bullet.png',
+            '1-inch-kit-1.png',
+            '1-inch-kit-2.png'
+          ];
+          
+          knownImages.forEach(img => {
+            imagePromises.push(checkImage(img));
+          });
+          
+          // Wait for all checks to complete and create gallery
+          Promise.all(imagePromises).then(() => {
+            createGalleryItems(foundImages);
+          });
+        }
       });
     </script>
   </body>
