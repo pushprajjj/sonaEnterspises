@@ -270,7 +270,7 @@ With a strong distribution network and a customer-first approach, we continue to
           />
         </div>
         <h3 class="contact-heading" data-aos="fade-up">Drop your queries here:</h3>
-        <form id="query-form">
+        <form action="/_controller/ContactFormHandeler.php" method="post" id="query-form">
           <div class="form-group" data-aos="fade-up" data-aos-delay="100">
             <input type="text" id="name" name="name" required />
             <label for="name">Name*</label>
@@ -343,6 +343,7 @@ With a strong distribution network and a customer-first approach, we continue to
 
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/script.js?v=23"></script>
   </body>
 </html>

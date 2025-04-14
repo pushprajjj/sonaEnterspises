@@ -186,17 +186,37 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.disabled = true;
     
     // Simulate server request with timeout
-    setTimeout(function() {
-      // Here you would typically send the data to a server
-      submitBtn.innerHTML = "SENT ✓";
-      setTimeout(function() {
-        // Reset form after successful submission
+  // Simulate server request with timeout
+setTimeout(function () {
+  // Send data to PHP controller using jQuery AJAX
+  $.ajax({
+    url: "/_controller/ContactFormHandeler.php",
+    type: "POST",
+    data: {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message
+    },
+    success: function (response) {
+      if (response.success) {
+        submitBtn.innerHTML = "SENT ✓";
+        setTimeout(function () {
+          submitBtn.innerHTML = "SUBMIT";
+          submitBtn.disabled = false;
+          alert(response.message); // Thank you message
+          form.reset();
+        }, 800);
+      } else {
         submitBtn.innerHTML = "SUBMIT";
         submitBtn.disabled = false;
-        alert("Thank you for your message. We will get back to you soon!");
-        form.reset();
-      }, 800);
-    }, 1000);
+        alert(response.message); // Error message from server
+      }
+    }
+    
+  });
+}, 1000);
+
   });
 
   // Add floating label effect
